@@ -15,11 +15,11 @@ class LoginpCntrl extends login {
 
     public function loginUser()
     {
-        $this->user_uid = $_POST['username'];
-        $this->pwd = $_POST['password'];
+        $this->user_uid = $_POST['uid'];
+        $this->pwd = $_POST['pwd'];
        if ($this->emptyInput() == false) {
 
-        $_SESSION['Error'] = 'input empty';
+        echo  'input empty';
         exit();
        }
        $this->getUser($this->user_uid, $this->pwd);
