@@ -8,6 +8,7 @@ class Login
     public function __construct($db){
         $this->db = $db ;
     }
+    
 
     protected function getUser($uid, $pwd)
     {

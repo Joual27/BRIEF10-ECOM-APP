@@ -1,22 +1,25 @@
 <?php
 
+session_start();
 
-class loginpCntrl extends login {
+class LoginpCntrl extends login {
 
     private $user_uid;
     private $pwd;
 
     public function __construct($user_uid, $pwd)
     {   
-        $this->user_uid = $user_uid;
-        $this->pwd = $pwd;
+        
         
     }
 
     public function loginUser()
     {
+        $this->user_uid = $_POST['username'];
+        $this->pwd = $_POST['password'];
        if ($this->emptyInput() == false) {
-        header("location: ../index.php?error=emptyinput");
+
+        $_SESSION['Error'] = 'input empty';
         exit();
        }
        $this->getUser($this->user_uid, $this->pwd);
