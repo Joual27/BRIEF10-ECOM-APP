@@ -13,7 +13,6 @@
         private function __construct() {
             $this->connectDatabase();
         }
-    
         public static function getInstance() {
             if (!self::$instance) {
                 self::$instance = new self();
@@ -21,7 +20,6 @@
             return self::$instance;
         }
         public function connectDatabase() {
-            // Database Source name
             $dsn = 'mysql:dbname=' . $this->dbname . ';host=' . $this->host;
             try {
                 $this->dbh = new PDO($dsn , $this->user , $this->pass );
