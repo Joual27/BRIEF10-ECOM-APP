@@ -6,16 +6,20 @@
         private $user = DB_USER;
         private $pass = DB_PASS;
         private $dbname = DB_NAME;
-
+        private static $instance;
         private $dbh;
         private $stmt;
         private $error;
-        public function __construct()
-        {   
+        private function __construct() {
             $this->connectDatabase();
-            
         }
-
+    
+        public static function getInstance() {
+            if (!self::$instance) {
+                self::$instance = new self();
+            }
+            return self::$instance;
+        }
         public function connectDatabase() {
             // Database Source name
             $dsn = 'mysql:dbname=' . $this->dbname . ';host=' . $this->host;
