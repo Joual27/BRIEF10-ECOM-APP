@@ -39,7 +39,4 @@
                 class="text-blue-500 hover:underline">Sign up</a></p>
 
     </div>
-
-</body>
-
-</html>
+    <?php require APPROOT."/views/incFile/footer.php"; ?>
