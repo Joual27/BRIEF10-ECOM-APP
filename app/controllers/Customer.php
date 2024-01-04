@@ -10,7 +10,8 @@
         public function products(){
             $this->view('customer/products');
         }
- 
+
+       
 
         public function getAllProducts(){
             $db = Database::getInstance();

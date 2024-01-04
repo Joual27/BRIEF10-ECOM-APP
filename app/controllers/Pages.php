@@ -14,4 +14,9 @@
             
             $this->view('pages/index' , $data );
         }
+
+        public function regestration(){
+            $this->view('pages/regestration');
+        }
+ 
     }
