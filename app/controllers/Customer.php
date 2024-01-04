@@ -25,7 +25,21 @@
             catch(PDOException $e){
                 die($e->getMessage());
             }
+        }
 
+        public function searchForProduct(){
+            if(isset($_POST["search"])){
+                $searchValue = $_POST["searchValue"];
+                $db = Database::getInstance();
+                $productsOfClientService = new ProductsOfClientServiceImp($db);
+                try{
+                    $products = $productsOfClientService->searchForProduct($searchValue);
+                    echo json_encode($products);
+                }
+                catch(PDOException $e){
+                    die($e->getMessage());
+                }    
+            }
         }
 
         
