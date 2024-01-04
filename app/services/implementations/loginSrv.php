@@ -34,13 +34,12 @@ class Login
                     $_SESSION['username'] = $row['username'];
                     $_SESSION['role'] = $row['client'];
 
-                    header("location: ../index.php?error=none&user=$uid");
+                    header("location: ../index.php");
                     exit();
                 }
             }
 
-            $_SESSION['Error'] = "wrongpassword";
-            header("location: ../login.php");
+            echo  "wrongpassword";
             exit();
         } else {
             $sql = "SELECT p.username, p.password
@@ -55,6 +54,8 @@ class Login
                 $rows = $this->db->fetchMultipleRows();
             } catch (PDOException $e) {
                 echo "Error: " . $e->getMessage();
+                header("location: ../login.php");
+
                 exit();
             }
 
@@ -65,7 +66,7 @@ class Login
                         $_SESSION['username'] = $row['username'];
                         $_SESSION['role'] = $row['admin'];
 
-                        header("location: ../index.php?error=none&user=$uid");
+                        header("location: ../index.php");
                         exit();
                     }
                 }
