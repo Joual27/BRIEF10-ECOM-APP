@@ -8,13 +8,13 @@ cart.classList.add("scale-95");
 $(document).ready(function(){
 
 
-    $POC = $("#POC");
+    let POC = $("#POC");
 
     function fetchAllProducts(response){
-        $POC.empty();
+        POC.empty();
         $.each(response, function(index,row){
             {
-                $POC.append(`
+                POC.append(`
                 <li class="col-span-1 flex flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200">
                 <div class="flex-1 flex flex-col p-8">
                   <img class="w-32 h-32 flex-shrink-0 mx-auto rounded-full" src="images (1).jpg" alt="">
@@ -65,4 +65,25 @@ $(document).ready(function(){
            fetchAllProducts(response);
         }
     })
+
+
+    
+
+    $("#search").on("keyup",function(){
+      let searchValue = $("#search").val();
+
+      $.ajax({
+        url : "http://localhost/ecom/customer/searchForProduct",
+        type : "POST",
+        dataType : "json",
+        data : {
+          "search" : 1 ,
+          "searchValue" : searchValue,
+        },
+        success : function(response){
+           fetchAllProducts(response);
+        }
+    })
+})
+
 })
