@@ -1,3 +1,10 @@
+const cart = document.getElementById('cart');
+const cartBtn = document.getElementById('cartBtn');
+cartBtn.addEventListener('click', (e) => {
+cart.classList.remove("scale-0");
+cart.classList.add("scale-95");
+});
+
 $(document).ready(function(){
     const cart = document.getElementById('cart');
     const cartBtn = document.getElementById('cartBtn');
