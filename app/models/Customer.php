@@ -3,7 +3,7 @@
 class Customer{
 
         private $customerId;
-        private $userId;
+        private User $user; 
         private $email;
         private $phone;
         private $adresse;
@@ -22,12 +22,12 @@ class Customer{
         public function setCustomerId($customerId) {
             $this->customerId = $customerId;
         }
-            public function getUserId() {
-            return $this->userId;
+            public function getUser() {
+            return $this->user;
         }
     
-        public function setUserId($userId) {
-            $this->userId = $userId;
+        public function setUser(User $user) { 
+            $this->user = $user;
         }
     
         public function getEmail() {

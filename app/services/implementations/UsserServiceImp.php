@@ -17,9 +17,17 @@
             $this->db->bind(":familyName", $user->getLname());
             $this->db->bind(":userName",$user->getUserName());
 
+            try{
+                $this->db->execute();
+             }
+             catch(PDOException $e){
+                die($e->getMessage());
+             }  
+          }
+
             
         }
 
-    }
+    
 
 ?>
