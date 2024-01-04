@@ -17,8 +17,16 @@ class ProductsOfClientServiceImp implements ProductsOfClientService{
         die($e->getMessage());
        }
     }
-    public function searchForProduct($productName){
-
+    public function searchForProduct($searchValue){
+       $searchForProductQuery = "SELECT * FROM product WHERE ProductName LIKE :searchValue";
+       $this->db->query($searchForProductQuery);
+       $this->db->bind(":searchValue",$searchValue."%");
+       try{
+         return $this->db->fetchMultipleRows();
+       }
+       catch(PDOException $e){
+        die($e->getMessage());
+       }
     }
     public function filterByCategory($category){
 

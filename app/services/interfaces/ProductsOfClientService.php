@@ -4,7 +4,7 @@
 interface ProductsOfClientService{
 
     public function getAllProducts();
-    public function searchForProduct($productName);
+    public function searchForProduct($searchValue);
     public function filterByCategory($category);
     public function filterByPrice($min , $max);
     public function addToCart(Product $product);
