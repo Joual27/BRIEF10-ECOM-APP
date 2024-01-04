@@ -1,5 +1,10 @@
 $(document).ready(function(){
-
+    const cart = document.getElementById('cart');
+    const cartBtn = document.getElementById('cartBtn');
+    cartBtn.addEventListener('click', (e) => {
+    cart.classList.remove("scale-0");
+    cart.classList.add("scale-95");
+    });
 
     let POC = $("#POC");
 
@@ -48,8 +53,6 @@ $(document).ready(function(){
             }
         })
     }
-
-
     $.ajax({
         url : "http://localhost/ecom/customer/getAllProducts",
         type : "GET" ,
