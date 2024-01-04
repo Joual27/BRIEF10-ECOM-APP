@@ -2,15 +2,13 @@
 
 session_start();
 
-class LoginpCntrl extends login {
+class LoginpCntrl extends LoginSrv {
 
     private $user_uid;
     private $pwd;
 
-    public function __construct($user_uid, $pwd)
-    {   
-        
-        
+    public function __construct()
+    {           
     }
 
     public function loginUser()

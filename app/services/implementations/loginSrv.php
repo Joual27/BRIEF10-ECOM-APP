@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-class Login 
+class LoginSrv
 {
     private Database $db ;
 
