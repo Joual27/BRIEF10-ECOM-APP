@@ -10,6 +10,9 @@
         public function products(){
             $this->view('customer/products');
         }
+        public function productOfCart(){
+            $this->view('customer/productOfCart');
+        }
  
 
         public function getAllProducts(){
