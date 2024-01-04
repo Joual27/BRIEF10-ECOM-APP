@@ -8,14 +8,14 @@ class ProductsOfClientServiceImp implements ProductsOfClientService{
         $this->db = $db ;
     }
     public function getAllProducts(){
-       $fetchAllProducts =  "SELECT * FROM product";
-       $this->db->query($fetchAllProducts);
-       try{
-        return $this->db->fetchMultipleRows();
-       }
-       catch(PDOException $e){
-        die($e->getMessage());
-       }
+        $fetchAllProducts =  "SELECT * FROM product";
+        $this->db->query($fetchAllProducts);
+        try{
+            return $this->db->fetchMultipleRows();
+        }
+        catch(PDOException $e){
+            die($e->getMessage());
+        }
     }
     public function searchForProduct($productName){
 

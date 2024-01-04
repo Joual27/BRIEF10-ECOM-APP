@@ -1,14 +1,16 @@
-<?php 
-    class Customer extends Controller {
+<?php
 
 
-        
-        public function __construct(){
+    class Admin extends Controller {
 
+        public function products() 
+        {
+            $this->view("admin/products");
         }
 
-        public function products(){
-            $this->view('customer/products');
+        public function categories() 
+        {
+            $this->view("admin/categories");
         }
 
         public function getAllProducts(){
@@ -23,7 +25,7 @@
             }
 
         }
-
+        
     }
 
-?>
+    ?>
