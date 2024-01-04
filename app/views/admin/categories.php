@@ -55,12 +55,15 @@
     <div id="popupContainer" class="fixed inset-0 flex items-center justify-end bg-black bg-opacity-50 hidden">
         <section class="md:m-5 md:p-5 bg-white rounded-md absolute h-[95vh] w-[40vw]">
 
-            <button  onclick="hiddPopup()" class="bg-red-200 border-2 border-red-500 text-red-500 h-[50px] px-4 py-2 rounded mb-2" >Close</button>
+            <button  onclick="hiddPopup()" class="hover:bg-red-300 focus:bg-red-700 hover:text-white hover:border-red-700 bg-red-200 border-2 border-red-500 text-red-500 h-[50px] px-4 py-2 rounded mb-2" >Close</button>
                     
             <!-- ADD FORM --> 
-            <form method="POST" class="w-full" enctype="multipart/form-data" >
+            <form method="POST" class="w-full" id="addCategory" >
                 <input type="text" name="name" placeholder="Category Name" class="w-full mb-2 p-2 border-2 border-gray-600 rounded">
+                <div class="errorMessage bg-red-200 text-red-500 border-red-500 px-[10px] mb-[5px] rounded"></div>
+                
                 <textarea name="description" placeholder="Category Description" class="w-full mb-2 p-2 border-2 border-gray-600 rounded"></textarea>
+                <div class="errorMessage bg-red-200 text-red-500 border-red-500 px-[10px] mb-[5px] rounded"></div>
 
                 <button type="submit" name="addCategory" class="bg-[#1d3557] text-white px-4 py-2 rounded">Save Category</button>
                 <button type="reset" class="bg-blue-200 border-2 border-[#1d3557] text-[#1d3557] px-4 py-2 rounded">Reset Form</button>
@@ -72,6 +75,8 @@
     <!-- DATATABLE SCRIPT LINKS -->
     <?php require_once(__DIR__."/../incFile/dataTable.php"); ?>
 
+    <script src="<?= URLROOT . '/public/js/admin/validate-category.js' ?>" ></script>
+
     <script>
         var popupContainer = document.getElementById('popupContainer');
         function showPopup() {popupContainer.classList.toggle('hidden');}
@@ -80,6 +85,7 @@
         $(document).ready(function() {
             $('#Table').DataTable({});
         });
+
     </script>
 
 
