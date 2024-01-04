@@ -42,7 +42,18 @@
             }
         }
 
-        
+        public function getAllProductsOfCart(){
+            $db = Database::getInstance();
+            $productsOfCartService = new ProductsOfCartServiceImp($db);
+            try{
+                $allProductsOfCart = $productsOfCartService->getAllProductsOfCart();
+                echo json_encode($allProductsOfCart);
+            }
+            catch(PDOException $e){
+                die($e->getMessage());
+            }
+        }
+
 
     }
 

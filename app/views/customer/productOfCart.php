@@ -1,5 +1,5 @@
 <?php require APPROOT."/views/incFile/header.php"; ?>
-<div class="bg-gray-100" style="min-height: 192px;">
+<div class="bg-gray-100 " style="min-height: 192px;">
     
     <header x-data="{ open: false }" class="bg-black">
       <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:divide-y lg:divide-gray-700 lg:px-8">
@@ -82,7 +82,7 @@
   The alpine.js code is *NOT* production ready and is included to preview
   possible interactivity
 -->
-<div class="bg-white">
+<div class="bg-white h-screen">
     
     <!--
     This example requires updating your template:
@@ -109,31 +109,11 @@
               <dd class="mt-2 text-indigo-600">51547878755545848512</dd>
             </dl>
   
-            <ul role="list" class="mt-6 text-sm font-medium text-gray-500 border-t border-gray-200 divide-y divide-gray-200">
+            <ul role="list" class="mt-6 text-sm font-medium text-gray-500 border-t border-gray-200 divide-y divide-gray-200" id="POFC">
               
-                <li class="flex py-6 space-x-6">
-                  <img src="https://tailwindui.com/img/ecommerce-images/confirmation-page-06-product-01.jpg" alt="Model wearing men's charcoal basic tee in large." class="flex-none w-24 h-24 bg-gray-100 rounded-md object-center object-cover">
-                  <div class="flex-auto space-y-1">
-                    <h3 class="text-gray-900">
-                      <a href="#">Basic Tee</a>
-                    </h3>
-                    <p>Charcoal</p>
-                    <p>L</p>
-                  </div>
-                  <p class="flex-none font-medium text-gray-900">$36.00</p>
-                </li>
+                
               
-                <li class="flex py-6 space-x-6">
-                  <img src="https://tailwindui.com/img/ecommerce-images/confirmation-page-06-product-02.jpg" alt="Model wearing women's artwork tee with isometric dots forming a cube in small." class="flex-none w-24 h-24 bg-gray-100 rounded-md object-center object-cover">
-                  <div class="flex-auto space-y-1">
-                    <h3 class="text-gray-900">
-                      <a href="#">Artwork Tee — Iso Dots</a>
-                    </h3>
-                    <p>Peach</p>
-                    <p>S</p>
-                  </div>
-                  <p class="flex-none font-medium text-gray-900">$36.00</p>
-                </li>
+              
               
             </ul>
   
