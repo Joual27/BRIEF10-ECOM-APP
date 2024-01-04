@@ -1,22 +1,17 @@
-<?php 
-    class Customer extends Controller {
+<?php
 
 
-        
-        public function __construct(){
+    class Admin extends Controller {
 
+        public function products() 
+        {
+            $this->view("admin/products");
         }
 
-        public function products(){
-            $this->view('customer/products');
+        public function categories() 
+        {
+            $this->view("admin/categories");
         }
-<<<<<<< HEAD
-        public function productOfCart(){
-            $this->view('customer/productOfCart');
-        }
- 
-=======
->>>>>>> b9407dc970e8014b202af795289e4f5441ee80e1
 
         public function getAllProducts(){
             $db = Database::getInstance();
@@ -30,7 +25,7 @@
             }
 
         }
-
+        
     }
 
-?>
+    ?>
