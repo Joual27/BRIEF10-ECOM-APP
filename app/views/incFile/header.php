@@ -7,4 +7,4 @@
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/main.css">
     <title><?= SITENAME;?></title>
 </head>
-<body class="body">
+<body class="body bg-gray-100 ">

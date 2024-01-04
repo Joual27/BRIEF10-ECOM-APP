@@ -1,17 +1,19 @@
-const cart = document.getElementById('cart');
-const cartBtn = document.getElementById('cartBtn');
-cartBtn.addEventListener('click', (e) => {
-cart.classList.remove("scale-0");
-cart.classList.add("scale-95");
-});
+
 
 $(document).ready(function(){
-    const cart = document.getElementById('cart');
-    const cartBtn = document.getElementById('cartBtn');
-    cartBtn.addEventListener('click', (e) => {
-    cart.classList.remove("scale-0");
-    cart.classList.add("scale-95");
+    
+    $("#cartBtn").on("click",function(){
+      if($("#cart").hasClass("hidden")){
+        $("#cart").fadeIn();
+      }
+    })
+
+    $(".overlay").on("click",function(){
+      $("#cart").fadeOut();
+    })
     });
+
+    
 
     let POC = $("#POC");
 
@@ -34,13 +36,13 @@ $(document).ready(function(){
                   </dl>
                 </div>
                 <div>
-                  <div class="-mt-px flex divide-x divide-gray-200">
+                  <div class="-mt-px flex divide-x divide-gray-200 ">
                     <div class="w-0 flex-1 flex">
-                      <a class="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500">
+                      <a class="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg cursor-pointer hover:text-gray-500">
                       <svg class="w-5 h-6 text-gray-400 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
             <path d="M9.546.5a9.5 9.5 0 1 0 9.5 9.5 9.51 9.51 0 0 0-9.5-9.5ZM13.788 11h-3.242v3.242a1 1 0 1 1-2 0V11H5.304a1 1 0 0 1 0-2h3.242V5.758a1 1 0 0 1 2 0V9h3.242a1 1 0 1 1 0 2Z"/>
           </svg>
-                        <span class="ml-3">Add To Card</span>
+                        <span class="ml-3 ">Add To Card</span>
                       </a>
                     </div>
                     <div class="-ml-px w-0 flex-1 flex">
@@ -89,4 +91,4 @@ $(document).ready(function(){
     })
 })
 
-})
+
