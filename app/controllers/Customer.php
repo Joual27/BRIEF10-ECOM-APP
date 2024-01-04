@@ -15,8 +15,8 @@
             $db = Database::getInstance();
             $productsOfClientService = new ProductsOfClientServiceImp($db);
             try{
-               $allProducts = $productsOfClientService->getAllProducts();
-               echo json_encode($allProducts);
+                $allProducts = $productsOfClientService->getAllProducts();
+                echo json_encode($allProducts);
             }
             catch(PDOException $e){
                 die($e->getMessage());
@@ -37,6 +37,7 @@
                 }    
             }
         }
+
     }
 
 ?>

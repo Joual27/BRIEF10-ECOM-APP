@@ -8,7 +8,6 @@ class Product{
     private Category $category ;
 
 
-    
     public function __construct() {}
 
     public function getProductId() {

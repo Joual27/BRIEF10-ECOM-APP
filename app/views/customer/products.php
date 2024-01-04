@@ -38,8 +38,8 @@
             </button>
           </div>
           <div class="hidden lg:relative lg:z-10 lg:ml-4 lg:flex lg:items-center">
-            <button type="button" class=" flex-shrink-0 rounded-full p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
-              <span class="sr-only">View notifications</span>
+            <button type="button" id="cartBtn" class=" flex-shrink-0 rounded-full p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+              <span class="sr-only">Cart</span>
               <svg class="w-6 h-6 text-white hover:text-yellow-400 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 15a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0h8m-8 0-1-4m9 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-9-4h10l2-7H3m2 7L3 4m0 0-.792-3H1"/>
   </svg>
@@ -47,14 +47,16 @@
   
             <div x-data="Components.menu({ open: false })" x-init="init()" @keydown.escape.stop="open = false; focusButton()" @click.away="onClickAway($event)" class="flex-shrink-0 relative ml-4">
               <div>
-                <button type="button" class="rounded-full flex text-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" x-ref="button" @click="onButtonClick()" @keyup.space.prevent="onButtonEnter()" @keydown.enter.prevent="onButtonEnter()" aria-expanded="false" aria-haspopup="true" x-bind:aria-expanded="open.toString()" @keydown.arrow-up.prevent="onArrowUp()" @keydown.arrow-down.prevent="onArrowDown()">
+                <button type="button"  class="rounded-full flex text-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" x-ref="button" @click="onButtonClick()" @keyup.space.prevent="onButtonEnter()" @keydown.enter.prevent="onButtonEnter()" aria-expanded="false" aria-haspopup="true" x-bind:aria-expanded="open.toString()" @keydown.arrow-up.prevent="onArrowUp()" @keydown.arrow-down.prevent="onArrowDown()">
                   <span class="sr-only">Log Out</span>
                   <svg class="mr-4 flex-shrink-0 h-7 w-7 text-white hover:text-red-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3"/>
                  </svg>                </button>
               </div>
               
+
                 <div  x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 py-1 focus:outline-none h-72 w-72" x-ref="menu-items" x-description="Dropdown menu, show/hide based on menu state." x-bind:aria-activedescendant="activeDescendant" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1" @keydown.arrow-up.prevent="onArrowUp()" @keydown.arrow-down.prevent="onArrowDown()" @keydown.tab="open = false" @keydown.enter.prevent="open = false; focusButton()" @keyup.space.prevent="open = false; focusButton()" id="">
+
                 </div>
               
             </div>
@@ -72,14 +74,38 @@
   
     <div>
    
-<div class="bg-gray-100 py-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="bg-gray-100 py-3">
+  <div class="flex justify-center gap-[80px]">
+  <div class="flex gap-5">
+<label for="underline_select" class=" font-medium py-5 text-[0.8rem] text-cyan-600">select Rang Price : </label>
+<select id="underline_select" class=" h-12 w-48 text-[0.8rem] bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-cyan-700 dark:border-cyan-600 focus:outline-none focus:ring-0 focus:border-gray-400 peer">
+    <option selected>All</option>
+    <option value="">Moh</option>
+    <option value="">Wali</option>
+    <option value="">Azi</option>
+    <option value="">Kaw</option>
+</select>
+</div>
+<div class="flex gap-5">
+<label for="underline_select" class="font-medium py-5 text-[0.8rem] text-cyan-600">Select Category : </label>
+<select id="underline_select" class="block h-12 w-48 text-[0.8rem] text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-cyan-700 dark:border-cyan-600 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+    <option selected>All</option>
+    <option value="">100-200</option>
+    <option value="">200-300</option>
+    <option value="">300-400</option>
+    <option value="">400-500</option>
+</select>
+</div>
+
+</div>
+    
+  </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
   <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4" id="POC">
 
   </ul>
 
     </div>
-  </div>
     
   <?php require APPROOT."/views/incFile/footer.php"; ?>
