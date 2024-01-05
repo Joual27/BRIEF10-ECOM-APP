@@ -5,7 +5,7 @@
     protected $currentController = 'Pages';
     protected $currentMethod = 'index';
     protected $params = [];
-    
+     
     public function __construct()
     {
         $url = $this->getUrl();
@@ -26,7 +26,7 @@
         }
         $this->params = $url ? array_values($url) : [];
 
-         call_user_func_array([$this->currentController, $this->currentMethod], $this->params);
+        call_user_func_array([$this->currentController, $this->currentMethod], $this->params);
 
     }
 

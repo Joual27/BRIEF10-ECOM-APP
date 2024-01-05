@@ -5,6 +5,10 @@ class Product{
     private $productId;
     private $productName ;
     private $productDesc;
+
+    private $price ;
+
+    private $image;
     private Category $category ;
 
 
@@ -32,6 +36,20 @@ class Product{
 
     public function setProductDesc($productDesc) {
         $this->productDesc = $productDesc;
+    }
+    public function getPrice() {
+        return $this->price;
+    }
+
+    public function setPrice($price) {
+        $this->price = $price;
+    }
+    public function getImage() {
+        return $this->image;
+    }
+
+    public function setImage($image) {
+        $this->image = $image;
     }
 
     public function getCategory() {
