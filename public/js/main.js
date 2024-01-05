@@ -97,6 +97,7 @@ $("#cart").on("click", ".delete", function () {
     }
   
     $.ajax({
+
       url : "http://localhost/ecom/customer/getAllProducts",
       type : "GET" ,
       dataType : "json" ,
@@ -174,7 +175,7 @@ $("#cart").on("click", ".delete", function () {
       let searchValue = $("#search").val();
 
       $.ajax({
-        url : "http://localhost/ecom/customer/searchForProduct",
+        url : "http://localhost/ECOM/Customer/searchForProduct",
         type : "POST",
         dataType : "json",
         data : {
