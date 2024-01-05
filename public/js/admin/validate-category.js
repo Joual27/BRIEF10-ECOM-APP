@@ -63,12 +63,13 @@ CategoryDescription.addEventListener('input', () => validateDescription());
 // Handling Form Submit 
 form.addEventListener('submit', (e) => {
 
+
     validateName();
     validateDescription();
 
     if (!validateName() || !validateDescription()) {
         e.preventDefault();
     } else {
-        form.submit();
+        e.submit();
     }
 })

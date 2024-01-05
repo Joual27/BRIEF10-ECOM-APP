@@ -8,5 +8,10 @@ interface ProductsOfClientService{
     public function filterByCategory($category);
     public function filterByPrice($min , $max);
     public function addToCart(Product $product);
+
+    /* Admin ONly =======  */
+    public function displayCategory();
+    public function addCategory(Category $category);
+    public function deleteCategory($id);
 }
 ?>

@@ -75,27 +75,14 @@
  <div>
       
       <div class=" py-3">
-        <div class="flex justify-center gap-[80px]">
+        <div class="flex ml-[22rem] gap-[80px]">
         <div class="flex gap-5">
       <label for="underline_select" class=" font-medium py-5 text-[0.8rem] text-cyan-600">Select Category :</label>
-      <select id="underline_select" class=" h-12 w-48 text-[0.8rem] bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-cyan-700 dark:border-cyan-600 focus:outline-none focus:ring-0 focus:border-gray-400 peer">
-          <option selected>All</option>
-          <option value="">Moh</option>
-          <option value="">Wali</option>
-          <option value="">Azi</option>
-          <option value="">Kaw</option>
+      <select id="underline_select" class=" h-12 w-48 text-[0.8rem] bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-cyan-700 dark:border-cyan-600 focus:outline-none focus:ring-0 focus:border-gray-400 peer catFilter">
+          <option value="" selected>All</option>
       </select>
       </div>
-      <div class="flex gap-5">
-      <label for="underline_select" class="font-medium py-5 text-[0.8rem] text-cyan-600">Select Price's Range :</label>
-      <select id="underline_select" class="block h-12 w-48 text-[0.8rem] text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-cyan-700 dark:border-cyan-600 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-          <option selected>All</option>
-          <option value="">100-200</option>
-          <option value="">200-300</option>
-          <option value="">300-400</option>
-          <option value="">400-500</option>
-      </select>
-      </div>
+      
 
       </div>
           

@@ -106,6 +106,32 @@
             }
         }
 
+        public function getAllCategories(){
+            $db = Database::getInstance();
+            $productOfClientService = new ProductsOfClientServiceImp($db);
+            try{
+                $categories = $productOfClientService->displayCategory();
+                echo json_encode($categories);
+            }
+            catch(PDOException $e){
+                die($e->getMessage());
+            } 
+        }
+
+        public function getProductsOfCategory(){
+            $categoryId = $_POST["id"];
+            $db = Database::getInstance();
+            $productOfClientService = new ProductsOfClientServiceImp($db);
+            
+            try{
+                $productsOfCategory = $productOfClientService->getProductsByCategory($categoryId);
+                echo json_encode($productsOfCategory);
+            }
+            catch(PDOException $e){
+                die($e->getMessage());
+            } 
+        }
+
 
     }
 

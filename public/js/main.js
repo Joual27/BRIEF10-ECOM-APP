@@ -59,7 +59,7 @@ $("#cart").on("click", ".delete", function () {
                 POC.append(`
                 <li class="col-span-1 flex flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200">
                 <div class="flex-1 flex flex-col p-8" id="pInfos">
-                  <img class="w-32 h-32 flex-shrink-0 mx-auto rounded-full" src="images (1).jpg" alt="">
+                 
                   <h3 class="mt-6 text-gray-900 text-sm font-medium" id="pName">${row.ProductName}</h3>
                   <dl class="mt-1 flex-grow flex flex-col justify-between">
                     <dt class="sr-only">Title</dt>
@@ -167,6 +167,44 @@ $("#cart").on("click", ".delete", function () {
       })    
     })
 
+
+
+    function fetchProductsByCategory(response){
+      // $(".catFilter").empty();
+      $.each(response,function(index,row){
+        $(".catFilter").append(`<option value="${row.categoryId}">${row.categoryName}</option>`);
+      })
+    }
+
+
+    $.ajax({
+      url : "http://localhost/ecom/customer/getAllCategories",
+      type : "GET" , 
+      dataType : "json",
+      success : function(response){
+          fetchProductsByCategory(response);
+      }
+    })
+
+    $(".catFilter").on("change",function(){
+       let categoryId = $(this).val();
+
+       $.ajax({
+        url : "http://localhost/ecom/customer/getProductsOfCategory",
+        type : "POST",
+        dataType : "json",
+        data : {
+          "id" : categoryId
+        },
+        success : function(response){
+          fetchAllProducts(response);
+        }
+       })
+    })
+
+
+
+
     
 
 
@@ -174,7 +212,7 @@ $("#cart").on("click", ".delete", function () {
       let searchValue = $("#search").val();
 
       $.ajax({
-        url : "http://localhost/ecom/customer/searchForProduct",
+        url : "http://localhost/ECOM/Customer/searchForProduct",
         type : "POST",
         dataType : "json",
         data : {
