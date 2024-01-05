@@ -45,7 +45,7 @@
   </svg>
             </button>
   
-            <div x-data="Components.menu({ open: false })" x-init="init()" @keydown.escape.stop="open = false; focusButton()" @click.away="onClickAway($event)" class="flex-shrink-0 relative ml-4">
+            <div class="flex-shrink-0 relative ml-4">
               <div>
                 <button type="button"  class="rounded-full flex text-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" x-ref="button" @click="onButtonClick()" @keyup.space.prevent="onButtonEnter()" @keydown.enter.prevent="onButtonEnter()" aria-expanded="false" aria-haspopup="true" x-bind:aria-expanded="open.toString()" @keydown.arrow-up.prevent="onArrowUp()" @keydown.arrow-down.prevent="onArrowDown()">
                   <span class="sr-only">Log Out</span>
@@ -55,26 +55,8 @@
                </button>
               </div>
               
-                <div  x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="origin-top-right absolute right-0 px-[0.5rem] mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 py-1 focus:outline-none h-[400px] w-72 " x-ref="menu-items" x-description="Dropdown menu, show/hide based on menu state." x-bind:aria-activedescendant="activeDescendant" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1" @keydown.arrow-up.prevent="onArrowUp()" @keydown.arrow-down.prevent="onArrowDown()" @keydown.tab="open = false" @keydown.enter.prevent="open = false; focusButton()" @keyup.space.prevent="open = false; focusButton()" id="cart">
-                  <div class="w-[100%] flex justify-between">
-                   <div class="flex gap-[10px]">
-                      <div>
-                          <img class="w-[50px] h-[50px]"  src="<?= URLROOT."/img/icons/category.png"?>" alt="">
-                      </div>
-                      <div class="items-center">
-                            <p class="font-medium text-gray-600 ">TEST TEST</p>
-                            <p class="font-medium text-[0.8rem]">TEST TEST</p>
-                      </div>
-                   </div>
-                   <div class="flex items-center gap-[20px]">
-                      <div>
-                          <p class="font-medium text-indigo-600">1000$</p>
-                      </div>
-                      <div>
-                        <img class="w-[30px] h-[30px]"  src="<?= URLROOT."/img/icons/delete.png"?>" alt="">       
-                      </div>
-                    </div>
-                  </div>
+                <div class="origin-top-right absolute right-0 px-[0.5rem] pt-[0.5rem] mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 py-1 focus:outline-none min-h-[150px] w-72 hidden " id="cart" >
+               
                 </div>
             </div>
           </div>
@@ -93,27 +75,14 @@
  <div>
       
       <div class=" py-3">
-        <div class="flex justify-center gap-[80px]">
+        <div class="flex ml-[22rem] gap-[80px]">
         <div class="flex gap-5">
       <label for="underline_select" class=" font-medium py-5 text-[0.8rem] text-cyan-600">Select Category :</label>
-      <select id="underline_select" class=" h-12 w-48 text-[0.8rem] bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-cyan-700 dark:border-cyan-600 focus:outline-none focus:ring-0 focus:border-gray-400 peer">
-          <option selected>All</option>
-          <option value="">Moh</option>
-          <option value="">Wali</option>
-          <option value="">Azi</option>
-          <option value="">Kaw</option>
+      <select id="underline_select" class=" h-12 w-48 text-[0.8rem] bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-cyan-700 dark:border-cyan-600 focus:outline-none focus:ring-0 focus:border-gray-400 peer catFilter">
+          <option value="" selected>All</option>
       </select>
       </div>
-      <div class="flex gap-5">
-      <label for="underline_select" class="font-medium py-5 text-[0.8rem] text-cyan-600">Select Price's Range :</label>
-      <select id="underline_select" class="block h-12 w-48 text-[0.8rem] text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-cyan-700 dark:border-cyan-600 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-          <option selected>All</option>
-          <option value="">100-200</option>
-          <option value="">200-300</option>
-          <option value="">300-400</option>
-          <option value="">400-500</option>
-      </select>
-      </div>
+      
 
       </div>
           
