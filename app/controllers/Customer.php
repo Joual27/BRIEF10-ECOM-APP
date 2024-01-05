@@ -10,6 +10,10 @@
         public function products(){
             $this->view('customer/products');
         }
+        public function productOfCart(){
+            $this->view('customer/productOfCart');
+        }
+ 
 
         public function getAllProducts(){
             $db = Database::getInstance();
@@ -37,6 +41,19 @@
                 }    
             }
         }
+
+        public function getAllProductsOfCart(){
+            $db = Database::getInstance();
+            $productsOfCartService = new ProductsOfCartServiceImp($db);
+            try{
+                $allProductsOfCart = $productsOfCartService->getAllProductsOfCart();
+                echo json_encode($allProductsOfCart);
+            }
+            catch(PDOException $e){
+                die($e->getMessage());
+            }
+        }
+
 
     }
 

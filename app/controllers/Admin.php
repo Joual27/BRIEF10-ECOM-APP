@@ -1,9 +1,7 @@
 <?php
 
-class Admin extends Controller {
-    public function categories() {
-        $this->view("admin/categories");
-    }
+    class Admin extends Controller {
+
 
     public function getAllProducts() {
         $db = Database::getInstance();
