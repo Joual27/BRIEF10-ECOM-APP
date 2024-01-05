@@ -27,15 +27,12 @@
                 $fname = $_POST["fname"];
                 $lname = $_POST["lname"];
                 $userName = $_POST["userName"];
-
                 $userToAdd = new user();
                 $userToAdd->setUserId($userId);
                 $userToAdd->setPassword($password);
                 $userToAdd->setFname($fname);
                 $userToAdd->setLname($lname);
                 $userToAdd->setUserName($userName);
-
-
             }
         }
 
@@ -46,7 +43,7 @@
                     $userId = $_POST["userId"];
                     $email = $_POST["email"];
                     $phone = $_POST["phone"];
-                    $adresse = $_POST["adresse"];
+                    $adresse = $_POST["adresse"]; 
 
                     $customarToAdd = new customer();
                     $customarToAdd->setCustomerId($customerId);
@@ -54,10 +51,17 @@
                     $customarToAdd->setEmail($email);
                     $customarToAdd->setPhone($phone);
                     $customarToAdd->setAdresse($adresse);
+                    $db = new database();
+                    
+                    $customerServices = new CustomerServices($db);
+                    try{
+                    $customerServices->addCustomer($customarToAdd);
+                    }
+                    catch(PDOException $e){
+                        die($e->getMessage());
+                    }
 
                 }  
-
-
 
             }
  
