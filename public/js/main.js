@@ -58,7 +58,7 @@ $(document).ready(function(){
 
 
     $.ajax({
-        url : "http://localhost/ecom/customer/getAllProducts",
+        url : "http://localhost/ECOM/Customer/getAllProducts",
         type : "GET" ,
         dataType : "json" ,
         success : function(response){
@@ -73,7 +73,7 @@ $(document).ready(function(){
       let searchValue = $("#search").val();
 
       $.ajax({
-        url : "http://localhost/ecom/customer/searchForProduct",
+        url : "http://localhost/ECOM/Customer/searchForProduct",
         type : "POST",
         dataType : "json",
         data : {
