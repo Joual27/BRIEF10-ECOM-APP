@@ -44,6 +44,7 @@
 
         public function getAllProductsOfCart(){
             $db = Database::getInstance();
+            $id = "25";
             $productsOfCartService = new ProductsOfCartServiceImp($db);
             try{
                 $allProductsOfCart = $productsOfCartService->getAllProductsOfCart();
@@ -51,6 +52,57 @@
             }
             catch(PDOException $e){
                 die($e->getMessage());
+            }
+        }
+
+
+        public function getAllProductsOfCustomer(){
+            $db = Database::getInstance();
+            $id = "25";
+            $productsOfCartService = new ProductOfCardServiceImp($db);
+            try{
+                $allProductsOfCart = $productsOfCartService->getAllProductsOfCard($id);
+                echo json_encode($allProductsOfCart);
+            }
+            catch(PDOException $e){
+                die($e->getMessage());
+            }
+        }
+
+
+        public function addProductOfCard(){
+            if(isset($_POST["add"])){
+                $productId = $_POST["productId"];
+                $id = "25";
+                $cardId = "100";
+                $db = Database::getInstance();
+                $productsOfCartService = new ProductOfCardServiceImp($db);
+                try{
+                    $productsOfCartService->addToCard($productId,$cardId);
+                    $allProductsOfCart = $productsOfCartService->getAllProductsOfCard($id);
+                    echo json_encode($allProductsOfCart);
+                }
+                catch(PDOException $e){
+                    die($e->getMessage());
+                }
+
+            }
+        }
+        public function deleteProductOfCard(){
+            if(isset($_POST["delete"])){
+                $id = "25";
+                $cardId = "100";
+                $productId = $_POST["productId"];
+                $db = Database::getInstance();
+                $productsOfCartService = new ProductOfCardServiceImp($db);
+                try{
+                    $productsOfCartService->deleteFromCard($productId,$cardId);
+                    $allProductsOfCart = $productsOfCartService->getAllProductsOfCard($id);
+                    echo json_encode($allProductsOfCart);
+                }
+                catch(PDOException $e){
+                    die($e->getMessage());
+                } 
             }
         }
 

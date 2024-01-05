@@ -45,7 +45,7 @@
   </svg>
             </button>
   
-            <div x-data="Components.menu({ open: false })" x-init="init()" @keydown.escape.stop="open = false; focusButton()" @click.away="onClickAway($event)" class="flex-shrink-0 relative ml-4">
+            <div class="flex-shrink-0 relative ml-4">
               <div>
                 <button type="button"  class="rounded-full flex text-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" x-ref="button" @click="onButtonClick()" @keyup.space.prevent="onButtonEnter()" @keydown.enter.prevent="onButtonEnter()" aria-expanded="false" aria-haspopup="true" x-bind:aria-expanded="open.toString()" @keydown.arrow-up.prevent="onArrowUp()" @keydown.arrow-down.prevent="onArrowDown()">
                   <span class="sr-only">Log Out</span>
@@ -55,26 +55,8 @@
                </button>
               </div>
               
-                <div  x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="origin-top-right absolute right-0 px-[0.5rem] mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 py-1 focus:outline-none h-[400px] w-72 " x-ref="menu-items" x-description="Dropdown menu, show/hide based on menu state." x-bind:aria-activedescendant="activeDescendant" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1" @keydown.arrow-up.prevent="onArrowUp()" @keydown.arrow-down.prevent="onArrowDown()" @keydown.tab="open = false" @keydown.enter.prevent="open = false; focusButton()" @keyup.space.prevent="open = false; focusButton()" id="cart">
-                  <div class="w-[100%] flex justify-between">
-                   <div class="flex gap-[10px]">
-                      <div>
-                          <img class="w-[50px] h-[50px]"  src="<?= URLROOT."/img/icons/category.png"?>" alt="">
-                      </div>
-                      <div class="items-center">
-                            <p class="font-medium text-gray-600 ">TEST TEST</p>
-                            <p class="font-medium text-[0.8rem]">TEST TEST</p>
-                      </div>
-                   </div>
-                   <div class="flex items-center gap-[20px]">
-                      <div>
-                          <p class="font-medium text-indigo-600">1000$</p>
-                      </div>
-                      <div>
-                        <img class="w-[30px] h-[30px]"  src="<?= URLROOT."/img/icons/delete.png"?>" alt="">       
-                      </div>
-                    </div>
-                  </div>
+                <div class="origin-top-right absolute right-0 px-[0.5rem] pt-[0.5rem] mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 py-1 focus:outline-none min-h-[150px] w-72 hidden " id="cart" >
+               
                 </div>
             </div>
           </div>
