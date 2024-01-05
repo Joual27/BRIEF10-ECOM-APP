@@ -49,7 +49,7 @@
                                     echo "  <td class='pl-4 pr-2 py-2 border-2 border-[#1d3557]'>
                                                 <div class='flex' >
                                                     <a  href='?update=". $category->categoryId ."'><img width='25px' class='mr-2' src='". URLROOT."/img/icons/edit.png" ."' alt='Img'></a>
-                                                    <a  href='?delete=". $category->categoryId ."'><img width='25px' src='". URLROOT."/img/icons/delete.png" ."' alt='Img'></a>
+                                                    <a  href='?delete=". $category->categoryId ."'><img width='25px' src='". URLROOT."/img/icons/dlt.png" ."' alt='Img'></a>
                                                 </div>
                                             </td>";
                                     echo "</tr>";
