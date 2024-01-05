@@ -97,6 +97,10 @@ $("#cart").on("click", ".delete", function () {
     }
   
     $.ajax({
+<<<<<<< HEAD
+=======
+
+>>>>>>> 83e648a79526ac2bcd84c81fd605de9df520b86c
       url : "http://localhost/ecom/customer/getAllProducts",
       type : "GET" ,
       dataType : "json" ,
