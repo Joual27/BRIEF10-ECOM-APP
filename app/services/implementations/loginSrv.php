@@ -3,79 +3,81 @@ session_start();
 
 class LoginSrv
 {
-    private Database $db ;
+    private Database $db;
 
-    public function __construct($db){
-        $this->db = $db ;
-    }
-    
-
-    protected function getUser($uid, $pwd)
+    public function __construct($db)
     {
-        $sql = "SELECT p.username, p.password, u.email
-                FROM `customer` AS u
-                JOIN `appuser` AS p ON u.userId = p.userId
-                WHERE p.username = :uid OR u.email = :uid";
+        $this->db = $db;
+    }
 
-        $this->db->query($sql);
+    public function getUser($uid, $pwd)
+    {
+        $sql_customer = "SELECT u.userId, p.username, p.password, u.email
+            FROM `customer` AS u
+            JOIN `appuser` AS p ON u.userId = p.userId
+            WHERE p.username = :uid OR u.email = :uid";
+
+        $this->db->query($sql_customer);
         $this->db->bind(':uid', $uid);
 
         try {
-            $rows = $this->db->fetchMultipleRows();
+            $row = $this->db->fetchOneRow();
         } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
+            logError($e->getMessage());
+            exit();
+        }
+        if ($row && password_verify($pwd, $row->password)) {
+            $_SESSION['userId'] = $row->userId;
+            $_SESSION['username'] = $row->username;
+
+            $_SESSION['role'] = 'customer';
+            // header("Location: customer_dashboard.php");
+            $userId = $_SESSION['userId'];
+            $username = $_SESSION['username'];
+            $response = array('success' => true, 'name' => $username, 'id' => $userId, 'message' => 'Login successful');
+            return $response;
+        }
+
+        $sql_admin = "SELECT u.userId, p.username, p.password
+            FROM `admin` AS u
+            JOIN `appuser` AS p ON u.userId = p.userId
+            WHERE p.username =  :uid ;";
+
+        $this->db->query($sql_admin);
+        $this->db->bind(':uid', $uid);
+
+        try {
+            $row = $this->db->fetchOneRow();
+        } catch (PDOException $e) {
+            logError($e->getMessage());
             exit();
         }
 
-        if ($rows) {
-            foreach ($rows as $row) {
-                if (password_verify($pwd, $row["password"])) {
-                    $_SESSION['userId'] = $row['userId'];
-                    $_SESSION['username'] = $row['username'];
-                    $_SESSION['role'] = $row['client'];
+        if ($row && password_verify($pwd, $row->password)) {
+            $_SESSION['userId'] = $row->userId;
+            $_SESSION['username'] = $row->username;
 
-                    header("location: ../index.php");
-                    exit();
-                }
+            if ($row->client) {
+                $_SESSION['role'] = 'admin';
+                header("Location: customer_dashboard.php");
+                $_SESSION['role'] = 'admin';
             }
 
-            echo  "wrongpassword";
-            exit();
-        } else {
-            $sql = "SELECT p.username, p.password
-                    FROM `admin` AS u
-                    JOIN `appuser` AS p ON u.userId = p.userId
-                    WHERE p.username = :uid OR u.email = :uid";
+            session_regenerate_id(true);
 
-            $this->db->query($sql);
-            $this->db->bind(':uid', $uid);
-
-            try {
-                $rows = $this->db->fetchMultipleRows();
-            } catch (PDOException $e) {
-                echo "Error: " . $e->getMessage();
-                header("location: ../login.php");
-
-                exit();
-            }
-
-            if ($rows) {
-                foreach ($rows as $row) {
-                    if (password_verify($pwd, $row["password"])) {
-                        $_SESSION['userId'] = $row['userId'];
-                        $_SESSION['username'] = $row['username'];
-                        $_SESSION['role'] = $row['admin'];
-
-                        header("location: ../index.php");
-                        exit();
-                    }
-                }
-            }
-
-            $_SESSION['Error'] = "wrongpassword";
-            header("location: ../login.php");
-            exit();
+            $userId = $_SESSION['userId'];
+            $username = $_SESSION['username'];
+            $response = array('success' => true, 'name' => $username, 'id' => $userId, 'message' => 'Login successful');
+            return $response;
         }
+
+        echo "Invalid credentials";
+        $_SESSION['Error'] = "Invalid credentials";
+        exit();
     }
 }
-?>
+
+function logError($message)
+{
+    error_log("Error: " . $message);
+}
