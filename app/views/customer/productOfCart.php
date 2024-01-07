@@ -92,7 +92,7 @@
     <body class="h-full">
     ```
     -->
-    <main class="relative lg:min-h-full">
+    <main class="relative lg:min-h-screen">
       <div class="h-80 overflow-hidden lg:absolute lg:w-1/2 lg:h-full lg:pr-4 xl:pr-12">
         <img src="https://tailwindui.com/img/ecommerce-images/confirmation-page-06-hero.jpg" alt="TODO" class="h-full w-full object-center object-cover">
       </div>
@@ -168,9 +168,20 @@
               </div>
             </dl>
   
-            <a href="#"><div class=" flex justify-center mt-16 bg-black text-white font-medium border-t rounded-lg py-4 cursor-pointer text-right">
-              <button>Add Command</button>
-            </div></a>
+            <div class=" flex justify-center mt-16 bg-black text-white font-medium border-t rounded-lg py-4 cursor-pointer text-right">
+            <form action="" method="post">
+                  <!-- Other form fields if any -->
+
+                  <!-- Add hidden input fields for product IDs -->
+                  <input type="hidden" name="productIds[]" value="5489">
+                  <input type="hidden" name="productIds[]" value="548964">
+                  <input type="hidden" name="productIds[]" value="564564">
+
+                  <!-- Add Command button -->
+                <button type="submit" id="addOrder" value="addOrder">Add Command</button>
+            </form>
+            
+            </div>
           </div>
         </div>
       </div>
