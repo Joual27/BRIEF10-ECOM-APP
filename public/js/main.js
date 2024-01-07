@@ -96,7 +96,7 @@ $("#cart").on("click", ".delete", function () {
             }
         })
     }
-  
+
    
 
       $.ajax({
@@ -127,6 +127,7 @@ $("#cart").on("click", ".delete", function () {
           }
       })
   })
+
 
   })
 
