@@ -1,6 +1,6 @@
 <?php
 
-    class Controller{
+    class Controller {
         // Load Model
         // public function model($model) {
         //     // Require model file 

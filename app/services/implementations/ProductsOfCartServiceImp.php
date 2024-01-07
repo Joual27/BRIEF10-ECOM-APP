@@ -14,7 +14,7 @@ class ProductsOfCartServiceImp implements ProductsOfCartService{
             return $this->db->fetchMultipleRows();
         }catch(PDOException $e){
             die($e->getMessage());
-        }
+    }
 }
 }
 
