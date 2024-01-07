@@ -1,6 +1,7 @@
 
 
-$(document).ready(function(){
+  $(document).ready(function(){
+
 
 
   $.ajax({
@@ -95,14 +96,39 @@ $("#cart").on("click", ".delete", function () {
             }
         })
     }
-  
-    $.ajax({
-      url : "http://localhost/ecom/customer/getAllProducts",
-      type : "GET" ,
-      dataType : "json" ,
-      success : function(response){
-         fetchAllProducts(response);
-      }
+
+   
+
+      $.ajax({
+          url : "http://localhost/ecom/customer/getAllProducts",
+          type : "GET" ,
+          dataType : "json" ,
+          success : function(response){
+            fetchAllProducts(response);
+          }
+      })
+
+
+      
+
+      $("#search").on("keyup",function(){
+        let searchValue = $("#search").val();
+
+        $.ajax({
+          url : "http://localhost/ecom/customer/searchForProduct",
+          type : "POST",
+          dataType : "json",
+          data : {
+            "search" : 1 ,
+            "searchValue" : searchValue,
+          },
+          success : function(response){
+            fetchAllProducts(response);
+          }
+      })
+  })
+
+
   })
 
 
@@ -229,5 +255,6 @@ $("#cart").on("click", ".delete", function () {
    
   
 })
+
 
 
