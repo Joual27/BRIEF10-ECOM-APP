@@ -1,107 +1,70 @@
 <?php
 
-
     class Admin extends Controller {
 
 
-        public function getAllProducts(){
-            $db = Database::getInstance();
-            $productsOfClientService = new ProductsOfClientServiceImp($db);
-            try{
-                $allProducts = $productsOfClientService->getAllProducts();
-                echo json_encode($allProducts);
-            }
-            catch(PDOException $e){
-                die($e->getMessage());
-            }
-        }
-
-
-        /* Admin Only ========== */
-        
-        public function products() 
-        {
-            $this->view("admin/products");
-        }
-
-
-
-
-
-
-
-        /* Category  ==== */ 
-        public function categories() 
-        { 
-            /* Add Category */ 
-            if (isset($_POST['addCategory'])) {
-
-                $db = Database::getInstance();
-
-                $name = $_POST['name'];
-                $description = $_POST['description'];
-
-                $category = new Category($name, $description);
-                $categoryService = new ProductsOfClientServiceImp($db);
-
-                $categoryService->addCategory($category);
-            }
-
-            /* Delete Category */ 
-            if (isset($_GET['delete'])) {
-                $id = $_GET['delete'];
-                $db = Database::getInstance();
-                
-                $categoryService = new ProductsOfClientServiceImp($db);
-
-                $categoryService->deleteCategory($id);
-            }
-
-            /* Display Category */
-            $db = Database::getInstance();
-            $category = new ProductsOfClientServiceImp($db);
-            $categoryData = $category->displayCategory();
-            $data = [
-                'data' => $categoryData
-            ];
-
-            /* Update Category */ 
-            if (isset($_GET['update'])) {
-                echo "
-                    <script>
-                        document.addEventListener('DOMContentLoaded', () => {
-                            document.getElementById('updateContainer').classList.remove('hidden');
-                        });
-                    </script>
-                ";
-
-                $id = $_GET['update'];
-
-                $db = Database::getInstance();
-                $categoryService = new ProductsOfClientServiceImp($db);
-                $ctgTooEdit = $categoryService->categoryToEdit($id);
-
-                $data = [
-                    'data' => $categoryData,
-                    'CategoryToEdit' => $ctgTooEdit
-                ];
-
-                $this->view("admin/categories", $data);
-
-            }
-
-            if (isset($_POST['updateCategory'])) {
-
-                $name = $_POST['updateName'];
-                $description = $_POST['updateDescription'];
-
-                $category = new Category($name, $description);
-
-                $categoryService->updateCategory($category, $id);
-            }
-
-            $this->view("admin/categories", $data);
-
+    public function getAllProducts() {
+        $db = Database::getInstance();
+        $productsOfClientService = new ProductsOfClientServiceImp($db);
+        try {
+            $allProducts = $productsOfClientService->getAllProducts();
+            echo json_encode($allProducts);
+        } catch (PDOException $e) {
+            die($e->getMessage());
         }
     }
+
+    public function products() {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $id = uniqid();
+            $productName = $_POST["ProductName"];
+            $category = $_POST["category"];
+            $productDesc = $_POST["productDesc"];
+            $price = $_POST["price"];
+
+            var_dump($id, $productName, $category, $productDesc, $price);
+
+            if (empty($productName) || empty($_FILES["image"]["name"]) || empty($productDesc) || empty($price) || empty($category)) {
+                $data["error"] = "pls fill datas";
+            } else {
+                
+                $fileName = basename($_FILES["image"]["name"]);
+                $placement =  $fileName;
+                $fileType = pathinfo($placement, PATHINFO_EXTENSION);
+
+                $allowedTypes = array("jpg", "png", "jpeg");
+
+                if (in_array($fileType, $allowedTypes)) {
+                    if (move_uploaded_file($_FILES["image"]["tmp_name"], $placement)) {
+                        $newproduct = new product();
+                        $newproduct->setProductId($id);
+                        $newproduct->setProductName($productName);
+                      
+                        $newproduct->setProductDesc($productDesc);
+                        $newproduct->setPrice($price);
+                        $newproduct->setCategory($category);
+
+                        try {
+
+                            $db = Database::getInstance();
+
+                            $productService  = new productService($db);                            
+                            
+                            $productService->addproduct($newproduct);
+                            header("Location:" . URLROOT . "/admin/product");
+                        } catch (PDOException $e) {
+                            die($e->getMessage());
+                        }
+                    } else {
+                        $data["error"] = "upload failed . TRY AGAIN !";
+                    }
+                } else {
+                    $data["error"] = "only JPG , JPEG OR PNG are allowed";
+                }
+            }
+        }
+        $this->view("admin/products", $data);
+
+    }
+}
 ?>

@@ -36,6 +36,7 @@
                             <tr class="bg-[#1d3557] text-white h-[50px] ">
                                 <td class="pl-4 border-2 border-[#1d3557]">ID </td>
                                 <td class="pl-4 border-2 border-[#1d3557]">Name </td>
+                                <td class="pl-4 border-2 border-[#1d3557]">images </td>
                                 <td class="pl-4 border-2 border-[#1d3557]">Description </td>
                                 <td class="pl-4 border-2 border-[#1d3557]">Category </td>
                                 <td class="pl-4 border-2 border-[#1d3557]">Price </td>
@@ -62,21 +63,25 @@
                     
             <!-- ADD FORM --> 
             <form method="POST" class="w-full" enctype="multipart/form-data" >
-                <input type="text" name="name" placeholder="Product Name" class="w-full mb-2 p-2 border-2 border-gray-600 rounded">
-                <textarea name="description" placeholder="Product Description" class="w-full mb-2 p-2 border-2 border-gray-600 rounded"></textarea>
+                <input type="text" name="ProductName" placeholder="Product Name" class="w-full mb-2 p-2 border-2 border-gray-600 rounded">
+                <textarea name="productDesc" placeholder="Product Description" class="w-full mb-2 p-2 border-2 border-gray-600 rounded"></textarea>
                 <select name="category" class="w-full mb-2 p-2 border-2 border-gray-600 rounded">
-                    <option value="" selected disabled >Select Product Category</option>
+                    <option value=""  disabled >Select Product Category</option>
+                    <option value="1" selected disabled  >null</option>
                 </select>
                 <input type="number" name="price" placeholder="Product Price" class="w-full mb-2 p-2 border-2 border-gray-600 rounded">
 
                 <div class="w-full mb-2 p-2 border-2 border-gray-600 rounded">
                     <input type="file" name="firstImage" class="mb-2" >
-                    <input type="file" name="secondImage">
                 </div>
 
                 <button type="submit" name="addProduct" class="bg-[#1d3557] text-white px-4 py-2 rounded">Save Product</button>
                 <button type="reset" class="bg-blue-200 border-2 border-[#1d3557] text-[#1d3557] px-4 py-2 rounded">Reset Form</button>
             </form>
+            <p class="text-red-500 font-semibold">
+         <?php if(!empty($data["error"])){
+            echo $data["error"];
+         }?>
         </section>
     </div>
 
