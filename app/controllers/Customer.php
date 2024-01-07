@@ -54,7 +54,35 @@
             }
         }
 
+        public function addOrderAndCommandLine() {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['addOrder'])) {
+                $customerId = "99";
+                $orderId = uniqid();
+                $productIds = isset($_POST['productIds']) ? $_POST['productIds'] : [];
+                $billId = "123456789"; // You can set this value based on your logic if needed
+        
+                $order = new Order();
+                $order->setOrderId($orderId);
+                $order->setCustomerId($customerId);
+        
+                $db = new Database();
+                $OrderAndCommandLineService = new OrderAndCommandLineServiceImp($db);
+        
+                try {
+                    $OrderAndCommandLineService->addOrderAndCommandLine($order, $productIds, $billId);
+                } catch (PDOException $e) {
+                    die($e->getMessage());
+                }
+            }
+        }
 
-    }
+
+        }
+        
+
+
+
+
+    
 
 ?>

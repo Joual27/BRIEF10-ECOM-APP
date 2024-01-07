@@ -19,6 +19,14 @@
             }
             return self::$instance;
         }
+        public function connect() {
+            try {
+                $this->dbh = new PDO($this->dsn, $this->user, $this->pass, $this->options);
+                $this->dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            } catch (PDOException $e) {
+                die("Database connection failed: " . $e->getMessage());
+            }
+        }
         public function connectDatabase() {
             $dsn = 'mysql:dbname=' . $this->dbname . ';host=' . $this->host;
             try {
